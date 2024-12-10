@@ -106,6 +106,7 @@ export const viewAssignedQueries = async (req: Request, res: Response): Promise<
             description: query.description,
             status: query.status,
             resolverNote: query.resolverNote || '',
+            internalNote: query.internalNote || ''
         }));
 
         res.status(200).json({
