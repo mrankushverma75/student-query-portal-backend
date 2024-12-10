@@ -25,7 +25,7 @@ const getNextResolver = async (): Promise<string> => {
 export const submitQuery = async (req: Request, res: Response): Promise<void> => {
     const { title, description } = req.body;
     const userId = req.user?.id;
-    const file = req.file?.filename; 
+    const file = req.file?.filename;
 
     try {
         const resolverId = await getNextResolver();
@@ -34,7 +34,7 @@ export const submitQuery = async (req: Request, res: Response): Promise<void> =>
             description,
             file,
             userId,
-            resolverId,
+            resolverId
         });
 
         res.status(201).json({ message: 'Query submitted successfully.', query });
@@ -64,6 +64,7 @@ export const getStudentQueries = async (req: Request, res: Response): Promise<vo
             description: query.description,
             status: query.status,
             resolverNote: query.resolverNote || '',
+            internalNote: query.internalNote || ''
         }));
 
         const totalPages = Math.ceil(count / pageSize);
