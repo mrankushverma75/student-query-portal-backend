@@ -125,7 +125,7 @@ export const viewAssignedQueries = async (req: Request, res: Response): Promise<
 
 export const updateQuery = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
-    const { status, resolverNote, resolutionSummary } = req.body;
+    const { status, resolverNote, internalNote } = req.body;
 
     try {
         const query = await Query.findByPk(id);
@@ -142,7 +142,7 @@ export const updateQuery = async (req: Request, res: Response): Promise<void> =>
 
         query.status = status || query.status;
         query.resolverNote = resolverNote || query.resolverNote;
-        query.resolutionSummary = resolutionSummary || query.resolutionSummary;
+        query.internalNote = internalNote || query.internalNote;
 
         await query.save();
 

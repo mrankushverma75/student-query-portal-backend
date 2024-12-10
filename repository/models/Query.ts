@@ -8,9 +8,9 @@ interface QueryAttributes {
     file?: string;
     userId?: string;
     resolverId?: string;
-    status: 'Pending' | 'In Progress' | 'Resolved';
+    status: 'Pending' | 'In-Progress' | 'Resolved';
     resolverNote?: string;
-    resolutionSummary?: string;
+    internalNote?: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -22,11 +22,11 @@ class Query extends Model<QueryAttributes, QueryCreationAttributes> implements Q
     public title!: string;
     public description!: string;
     public file?: string;
-    public status!: 'Pending' | 'In Progress' | 'Resolved';
+    public status!: 'Pending' | 'In-Progress' | 'Resolved';
     public resolverNote?: string;
     public userId?: string;
     public resolverId?: string;
-    public resolutionSummary?: string;
+    public internalNote?: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 }
@@ -61,7 +61,7 @@ Query.init(
             allowNull: true,
         },
         status: {
-            type: DataTypes.ENUM('Pending', 'In Progress', 'Resolved'),
+            type: DataTypes.ENUM('Pending', 'In-Progress', 'Resolved'),
             defaultValue: 'Pending',
             allowNull: false,
         },
@@ -69,7 +69,7 @@ Query.init(
             type: DataTypes.TEXT,
             allowNull: true,
         },
-        resolutionSummary: {
+        internalNote: {
             type: DataTypes.TEXT,
             allowNull: true,
         },
